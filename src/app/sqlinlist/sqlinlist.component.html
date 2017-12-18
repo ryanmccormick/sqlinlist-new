@@ -9,17 +9,17 @@
     <div class="col-12">
       <div class="form-check form-check-inline">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Numeric
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="numeric" [(ngModel)]="inListType"> Numeric
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> String
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="string" [(ngModel)]="inListType"> String
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> List
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="list" [(ngModel)]="inListType"> List
         </label>
       </div>
     </div>
@@ -27,14 +27,16 @@
 
   <div class="row">
     <div class="col-12">
-      <textarea class="form-control inlist-input"></textarea>
+      <textarea class="form-control inlist-input" [class.ready]="isReady" [(ngModel)]="inListInput" appInputSettings></textarea>
     </div>
   </div>
 
   <div class="row mt-2">
     <div class="col-12">
-      <button class="btn btn-primary">Make 'IN' List</button>
-      <button class="btn btn-secondary">Reset</button>
+      <button class="btn btn-primary"
+              (click)="makeNewInlist(inListInput)"
+              [disabled]="makeNewInListButtonDisabled" spellcheck="">Make 'IN' List</button>
+      <button class="btn btn-secondary" (click)="resetInList()">Reset</button>
     </div>
   </div>
 
